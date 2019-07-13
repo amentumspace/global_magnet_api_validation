@@ -1,10 +1,6 @@
 # Background 
 
-The International Real-time Magnetic Observatory Network ([INTERMAGNET](http://www.intermagnet.org/)) monitors the Earth's magnetic field and provides important insights into the Earth's interior, atmosphere and magnetosphere. A comprehensive list of observatories and their instrumentation is provided on the INTERMAGNET website [here](http://intermagnet.org/imos/imotblobs-eng.php). The image below shows the observatory in the Maldives
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Intermagnet_observatory_Maledives.jpg" width="400">
-
-The data is aggregated and made available to the public from the INTERMAGNET website.
+The International Real-time Magnetic Observatory Network ([INTERMAGNET](http://www.intermagnet.org/)) monitors the Earth's magnetic field and provides important insights into the Earth's interior, atmosphere and magnetosphere. A comprehensive list of observatories and their instrumentation is provided on the INTERMAGNET website [here](http://intermagnet.org/imos/imotblobs-eng.php). The data is aggregated and made available to the public from the INTERMAGNET website.
 
 The following study validates the World Magnetic Model model and the Amentum API by comparing results of API calls with experimental data obtained at INTERMAGNET observatories around the world on a particular date.
 
