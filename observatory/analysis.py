@@ -33,6 +33,7 @@ df_global = pd.DataFrame(columns=[
 ])
 
 hostname = "https://globalmagnet.amentum.space/api/calculate_magnetic_field"
+hostname = "http://localhost:5000/api/calculate_magnetic_field"
 
 for filename in filenames: 
 

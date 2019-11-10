@@ -11,7 +11,7 @@ import numpy as np
 import os, sys
 sys.path.append(os.environ['CDF_LIB'])
 import pandas as pd
-import plotly.plotly as py
+import chart_studio.plotly as py
 import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from PyAstronomy import pyasl
@@ -79,7 +79,12 @@ for i, timestamp in enumerate(cdf['Timestamp']):
 
     try: 
         response = requests.get(hostname, params=payload)
+        response.raise_for_status()
     except requests.exceptions.RequestException as e:
+        print(response.json())
+        print(e.args)
+    except requests.exceptions.HTTPError as e:
+        print(response.json())
         print(e.args)
 
     response_json = response.json()
