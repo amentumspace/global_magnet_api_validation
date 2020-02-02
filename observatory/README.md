@@ -48,4 +48,4 @@ Figure 1: Screenshot of interactive plot produced by the Python script.
 The results presented in this document rely on data collected at magnetic observatories. We thank the national institutes that support them and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).
 
 
-Copyright 2019 [Amentum Aerospace](https://amentum.space), Australia
+Copyright 2020 [Amentum Aerospace](https://amentum.space), Australia

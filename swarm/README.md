@@ -56,4 +56,4 @@ Figure 1: A screenshot of the interactive python app showing the orbital path of
 Data provided by the European Space Agency.
 
 
-Copyright 2019 [Amentum Aerospace](https://amentum.space), Australia
+Copyright 2020 [Amentum Aerospace](https://amentum.space), Australia

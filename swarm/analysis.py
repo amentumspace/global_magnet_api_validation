@@ -36,6 +36,7 @@ df = pd.DataFrame(
         'time', 'decimal_year', 'latitude', 'longitude', 'decl_swarm', 'decl_api'])
 
 hostname = "https://globalmagnet.amentum.space/api/calculate_magnetic_field"
+hostname = "http://localhost:5000/api/calculate_magnetic_field"
 
 earth_radius = 6371.0 # [km] assumed by pysatMagVect
 
@@ -80,10 +81,10 @@ for i, timestamp in enumerate(cdf['Timestamp']):
     try: 
         response = requests.get(hostname, params=payload)
         response.raise_for_status()
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.HTTPError as e:
         print(response.json())
         print(e.args)
-    except requests.exceptions.HTTPError as e:
+    except requests.exceptions.RequestException as e:
         print(response.json())
         print(e.args)
 
@@ -142,8 +143,8 @@ layout = go.Layout(
     title=go.layout.Title(
         text="Magnetic declination values measured by the \
 <a href='https://earth.esa.int/web/guest/swarm/data-access'>SWARM-A</a> satellite <br>\
-and calculated by <a href='https://www.ngdc.noaa.gov/geomag/WMM/'>WMM2015v2</a> \
-using the <a href='https://amentum.space'>AMENTUM API</a> \
+and calculated by the <a href='https://www.ngdc.noaa.gov/geomag/WMM/'>World Magnetic Model</a> \
+using the <a href='https://amentum.space'>AMENTUM API</a> <br>\
 on " + timestamp.strftime("%Y-%m-%d")),
     font=dict(family='Courier New, monospace', size=12, color='#7f7f7f'),
     geo=go.layout.Geo(
