@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np 
 import os
 import pandas as pd 
-import plotly.plotly as py
+import chart_studio.plotly as py
 import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import requests
@@ -210,7 +210,7 @@ layout = go.Layout(
         text="Magnetic declination values on "+date+\
 " <br>measured by <a href='http://www.intermagnet.org'>INTERMAGNET</a> observatories<br>\
 and calculated by \
-<a href='https://www.ngdc.noaa.gov/geomag/WMM/'>WMM2015v2</a> \
+<a href='https://www.ngdc.noaa.gov/geomag/WMM/'>World Magnetic Model</a> \
 using the <a href='https://amentum.space'>AMENTUM API</a>"),
     font=dict(family='Courier New, monospace', size=12, color='#7f7f7f'),
     geo=go.layout.Geo(

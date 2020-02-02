@@ -1,3 +1,4 @@
+chart_studio
 matplotlib
 numpy
 pandas
