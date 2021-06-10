@@ -1,6 +1,6 @@
 # Global Magnet API Validation Studies
 
-This repository contains validation studies for Amentum's Global Magnet API available [here](https://amentum.space)
+This repository contains validation studies for Amentum's Global Magnet API available [here](https://amentum.space/globalmagnet)
 
 Each directory contains:
 
@@ -26,5 +26,5 @@ The specific <command line arguments> will be different for each study.
 
 That will launch a browser window and display the interactive plots. 
 
-Copyright 2019 [Amentum Aerospace](https://amentum.space), Australia.
+Copyright 2021 [Amentum Aerospace](https://amentum.space), Australia.
 
