@@ -36,7 +36,7 @@ df = pd.DataFrame(
         'time', 'decimal_year', 'latitude', 'longitude', 'decl_swarm', 'decl_api'])
 
 hostname = "https://globalmagnet.amentum.space/api/calculate_magnetic_field"
-hostname = "http://localhost:5000/api/calculate_magnetic_field"
+hostname = os.environ.get("URL")+"/api/calculate_magnetic_field"
 
 earth_radius = 6371.0 # [km] assumed by pysatMagVect
 
