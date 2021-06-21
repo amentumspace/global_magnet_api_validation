@@ -1,8 +1,8 @@
 # Background 
 
-Swarm is a European Space Agency mission to monitor the Earth's magnetic field. The mission was launched in 2013 and is comprised of 3 satellites in two different polar orbits: 2 satellites fly at an altitude of around 450 km and a third at an altitude of approximately 530 km. The satellites are equipped with a number of instruments including a vector field magnetometer (VFM) to measure the magnetic field components. The goal of SWARM is to study geodynamo processes in the Earth's interior, as well as currents in the magnetosphere and ionosphere that are affected by solar activity. More details can be found [here](https://m.esa.int/Our_Activities/Observing_the_Earth/Swarm/Introducing_Swarm)
+Swarm is a European Space Agency mission to monitor the Earth's magnetic field. The mission was launched in 2013 and comprises 3 satellites in two different polar orbits: 2 satellites fly at an altitude of around 450 km and a third at an altitude of approximately 530 km. The satellites are equipped with a number of instruments including a vector field magnetometer (VFM) to measure the magnetic field components. The goal of SWARM is to study geodynamo processes in the Earth's interior, as well as currents in the magnetosphere and ionosphere that are affected by solar activity. More details can be found [here](https://m.esa.int/Our_Activities/Observing_the_Earth/Swarm/Introducing_Swarm)
 
-The following analysis compares daily measurements performed by a swarm satellite and to predictions by the World Magnetic Model accessed using Amentum's API. 
+The following analysis compares daily measurements performed by a swarm satellite to predictions by the World Magnetic Model accessed using Amentum's API. 
 
 # Methods 
 
@@ -30,6 +30,14 @@ Set some environment variables with
 Once you have CDF libraries installed, install the Python module dependencies with 
 
     pip install -r requirements.txt 
+
+Note: this has been tested using Python 3.8
+
+## Retrieving an API Key
+
+You will need to register for an Amentum API Account [here](https://developer.amentum.io). Once you confirm your email, generate an API under the `Settings` page, then subscribe to the `wmm` (World Magnetic Model) endpoint under the `Subscriptions` page. 
+
+**Note** these studies perform a large number of API calls, so please be mindful of your quota. 
 
 ## Running the script 
 

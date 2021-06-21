@@ -1,6 +1,6 @@
 """
 Author: I. Cornelius
-Copyright Amentum Pty Ltd 2019
+Copyright Amentum Pty Ltd 2021
 """
 import argparse
 import dash
@@ -23,9 +23,25 @@ from spacepy import pycdf
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument(
+    "--host",
+    dest="host",
+    action="store",
+    help="Alternative host for testing (e.g. on-premises API server)",
+    default="https://geomag.amentum.io",
+)
+
 parser.add_argument('--cdf_file', dest='cdf_file', action='store',
     help='SWARM CDF FILE ',
     default='')
+
+parser.add_argument(
+    "--api_key",
+    dest="api_key",
+    action="store",
+    help="valid API key obtained from https://developer.amentum.io",
+    default=""    
+)
 
 args = parser.parse_args()
 
@@ -35,8 +51,7 @@ df = pd.DataFrame(
     columns = [
         'time', 'decimal_year', 'latitude', 'longitude', 'decl_swarm', 'decl_api'])
 
-hostname = "https://globalmagnet.amentum.space/api/calculate_magnetic_field"
-hostname = os.environ.get("URL")+"/api/calculate_magnetic_field"
+hostname = args.host + "/wmm/magnetic_field"
 
 earth_radius = 6371.0 # [km] assumed by pysatMagVect
 
@@ -71,15 +86,18 @@ for i, timestamp in enumerate(cdf['Timestamp']):
     decl_swarm = np.rad2deg(decl_swarm)
 
     # make API call to fetch declination 
-    payload = dict(
+    params = dict(
         altitude = altitude, # [km]
         longitude = longitude, # [deg]
         latitude = latitude,
         year = decimal_year
     )
+    headers = {
+        "API-Key" : args.api_key
+    }
 
     try: 
-        response = requests.get(hostname, params=payload)
+        response = requests.get(hostname, params=params, headers=headers)
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:
         print(response.json())

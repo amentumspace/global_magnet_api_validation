@@ -14,6 +14,23 @@ parser.add_argument('--iaga_dir', dest='iaga_dir', action='store',
     help='Directory containing IAGA 2002 formatted data files for INTERMAG network ',
     default='data/')
 
+
+parser.add_argument(
+    "--host",
+    dest="host",
+    action="store",
+    help="Alternative host for testing (e.g. on-premises API server)",
+    default="https://geomag.amentum.io",
+)
+
+parser.add_argument(
+    "--api_key",
+    dest="api_key",
+    action="store",
+    help="valid API key obtained from https://developer.amentum.io",
+    default=""    
+)
+
 args = parser.parse_args()
 
 # get all the filenames in the data directory
@@ -32,8 +49,7 @@ df_global = pd.DataFrame(columns=[
     "declination", "uncertainty", "declination_api"
 ])
 
-hostname = "https://globalmagnet.amentum.space/api/calculate_magnetic_field"
-hostname = "http://localhost:5000/api/calculate_magnetic_field"
+hostname = args.host + "/wmm/magnetic_field"
 
 for filename in filenames: 
 
@@ -44,10 +60,7 @@ for filename in filenames:
     with open(args.iaga_dir+'/'+filename) as myfile : 
         for i, myline in enumerate(myfile): 
             # ignore lines with poudn sign in them
-            if '#' in myline : 
-                pass
-            # we are at the end of the header, so break loop
-            elif myline.split()[0] == 'DATE':
+            if myline.split()[0] == 'DATE':
                 break
             # otherwise parse header entry into KV pair
             else : 
@@ -133,16 +146,24 @@ for filename in filenames:
     # convert to kms
     altitude = float(altitude)/1000
 
-    payload = dict(
+    params = dict(
         altitude = altitude, # [km]
         longitude = longitude, # [deg]
         latitude = latitude,
         year = decimal_year
     )
+    headers = {
+        "API-Key" : args.api_key
+    }
 
     try: 
-        response = requests.get(hostname, params=payload)
+        response = requests.get(hostname, params=params, headers=headers)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print(response.json())
+        print(e.args)
     except requests.exceptions.RequestException as e:
+        print(response.json())
         print(e.args)
 
     response_json = response.json()

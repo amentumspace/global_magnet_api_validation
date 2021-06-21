@@ -33,7 +33,7 @@ Before running the script, ensure you have installed the Python module dependenc
 
 Run the script from the command line with 
 
-    python analysis.py --iaga_dir <path_to_iaga_files>
+    python analysis.py --iaga_dir <path_to_iaga_files> --api_key <your_api_key>
 
 The script will then execute and launch a browser window with an interactive graph. Roll the mouse cursor over an observatory marker to view measured and calculated values of magnetic declination for that date at the longitude and latitude indicated. 
 
@@ -48,4 +48,4 @@ Figure 1: Screenshot of interactive plot produced by the Python script.
 The results presented in this document rely on data collected at magnetic observatories. We thank the national institutes that support them and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).
 
 
-Copyright 2020 [Amentum Aerospace](https://amentum.space), Australia
+Copyright 2021 [Amentum Aerospace](https://amentum.space), Australia
